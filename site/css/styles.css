@@ -692,8 +692,7 @@ kbd {
 /* ==========================================================================
    Page « Physique » (physique.html, <html class="article">)
    ========================================================================== */
-.article { scroll-snap-type: none; }
-.article .section, .article .page-intro { min-height: 0; display: block; }
+/* Une section à la fois, comme sur l'accueil : chaque section remplit l'écran et le défilement s'y cale. */
 /* Page de lecture : fonds unis, sans photo (alternance sombre / un peu plus clair). */
 .article .section { background: var(--bg); }
 .article .section-alt { background: var(--bg-alt); }
@@ -810,4 +809,21 @@ kbd {
 .fig-num {
   display: grid; place-items: center; width: 22px; height: 22px; flex: none; border-radius: 50%;
   background: var(--accent); color: var(--on-accent); font: 600 0.75rem/1 var(--font-mono);
+}
+
+/* Page « Physique » : une section par écran */
+.article .prose > h2 { color: var(--text); }
+.article .prose > .eyebrow + h2 { margin-top: 0; }
+.aside-col { display: grid; gap: var(--s-4); }
+.aside-col .formula { margin: 0; }
+.aside-note { font-size: 0.9375rem; line-height: 1.7; color: var(--text-2); }
+/* La dernière section a son propre écran ; le pied de page reste accessible après elle. */
+.article .section:last-of-type { min-height: calc(100vh - var(--header-h)); min-height: calc(100svh - var(--header-h)); }
+.article .site-footer { scroll-snap-align: end; }
+@media (min-width: 1200px) {
+  .article .section { padding-block: var(--s-10); }
+  .article .page-intro { padding-block: var(--s-10); }
+  .demo .orbit { display: block; max-width: 440px; margin-inline: auto; }
+  .demo-panel { margin-top: var(--s-2); }
+  .demo-controls { margin-top: var(--s-3); }
 }

@@ -189,11 +189,14 @@ earthshine_svg = '''<svg viewBox="-1.3 -1.3 2.6 2.6" aria-hidden="true">
             </svg>'''
 
 def section(sid, alt, eyebrow, title, inner):
+    # Le titre est placé en tête de la première colonne de texte (.prose) : il reste à côté du schéma.
+    heading = f'''
+            <p class="eyebrow" {t(eyebrow)}</p>
+            <h2 id="{sid}-title" {t(title)}</h2>'''
+    inner = re.sub(r'(<div class="prose[^"]*">)', lambda m: m.group(1) + heading, inner, count=1)
     return f'''
     <section class="section{' section-alt' if alt else ''}" id="{sid}" aria-labelledby="{sid}-title">
       <div class="container">
-        <p class="eyebrow" {t(eyebrow)}</p>
-        <h2 id="{sid}-title" {t(title)}</h2>
 {inner}
       </div>
     </section>'''
@@ -276,17 +279,19 @@ main = f'''
           <div class="prose">
             <p {th("s3.p1Html")}</p>
             <p {th("s3.p2Html")}</p>
+            <p {t("s3.p3")}</p>
+          </div>
+          <div class="aside-col">
+            <figure class="figure-card figure-narrow">
+              {term_svg}
+              <figcaption {t("s3.fig.caption")}</figcaption>
+            </figure>
             <div class="formula">
               <p>tan <em>i</em> = <em>R</em> sin ψ / (Δ − <em>R</em> cos ψ)</p>
               <p>k = (1 + cos <em>i</em>) / 2</p>
             </div>
-            <p {t("s3.p3")}</p>
-            <p {t("s3.p4")}</p>
+            <p class="aside-note" {t("s3.p4")}</p>
           </div>
-          <figure class="figure-card figure-narrow">
-            {term_svg}
-            <figcaption {t("s3.fig.caption")}</figcaption>
-          </figure>
         </div>''') + section("nommer", False, "s4.eyebrow", "s4.title", f'''        <div class="prose prose-wide">
           <p {t("s4.p1")}</p>
           <div class="formula"><p {th("s4.fHtml")}</p></div>
@@ -321,12 +326,6 @@ main = f'''
             {earthshine_svg}
           </figure>
         </div>''') + section("calcul", False, "s8.eyebrow", "s8.title", f'''        <div class="article-grid">
-          <ol class="steps">
-            <li class="step"><span class="step-num" aria-hidden="true">1</span><div><h3 {t("s8.1.title")}</h3><p {t("s8.1.text")}</p></div></li>
-            <li class="step"><span class="step-num" aria-hidden="true">2</span><div><h3 {t("s8.2.title")}</h3><p {t("s8.2.text")}</p></div></li>
-            <li class="step"><span class="step-num" aria-hidden="true">3</span><div><h3 {t("s8.3.title")}</h3><p {t("s8.3.text")}</p></div></li>
-            <li class="step"><span class="step-num" aria-hidden="true">4</span><div><h3 {t("s8.4.title")}</h3><p {t("s8.4.text")}</p></div></li>
-          </ol>
           <div class="prose">
             <p {t("s8.p1")}</p>
             <div class="cta-row">
@@ -340,6 +339,12 @@ main = f'''
               <li><a href="https://www.astropy.org/" {t("s8.src2")}</a></li>
             </ul>
           </div>
+          <ol class="steps">
+            <li class="step"><span class="step-num" aria-hidden="true">1</span><div><h3 {t("s8.1.title")}</h3><p {t("s8.1.text")}</p></div></li>
+            <li class="step"><span class="step-num" aria-hidden="true">2</span><div><h3 {t("s8.2.title")}</h3><p {t("s8.2.text")}</p></div></li>
+            <li class="step"><span class="step-num" aria-hidden="true">3</span><div><h3 {t("s8.3.title")}</h3><p {t("s8.3.text")}</p></div></li>
+            <li class="step"><span class="step-num" aria-hidden="true">4</span><div><h3 {t("s8.4.title")}</h3><p {t("s8.4.text")}</p></div></li>
+          </ol>
         </div>''') + "\n  </main>\n\n"
 
 html = head + "</head>\n" + sprite.replace("<body>", "<body>") + "\n\n" + header + main + footer + "\n</body>\n</html>\n"

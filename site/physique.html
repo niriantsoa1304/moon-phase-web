@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=2026-09-26n">
+  <link rel="stylesheet" href="css/styles.css?v=2026-09-26o">
   <script type="module" src="js/physique.js"></script>
   <script>
     /* Une ancienne version du site installait un service worker qui servait du CSS/JS périmé.
@@ -139,10 +139,10 @@
 
     <section class="section section-alt" id="geometrie" aria-labelledby="geometrie-title">
       <div class="container">
-        <p class="eyebrow" data-i18n="phy.s1.eyebrow">1 · Géométrie</p>
-        <h2 id="geometrie-title" data-i18n="phy.s1.title">Tout est une question d'angle.</h2>
         <div class="article-grid">
           <div class="prose">
+            <p class="eyebrow" data-i18n="phy.s1.eyebrow">1 · Géométrie</p>
+            <h2 id="geometrie-title" data-i18n="phy.s1.title">Tout est une question d'angle.</h2>
             <p data-i18n="phy.s1.p1">Le Soleil éclaire toujours la moitié de la Lune tournée vers lui, exactement comme il éclaire la moitié de la Terre où il fait jour. En 29,5 jours, la Lune fait le tour de la Terre, et nous voyons successivement sa face nocturne, puis son profil, puis sa face éclairée.</p>
             <p data-i18n="phy.s1.p2">À la nouvelle lune, elle passe entre la Terre et le Soleil : nous voyons son côté nuit. À la pleine lune, elle est de l'autre côté de la Terre : son côté jour est tourné vers nous. Aux quartiers, nous voyons exactement la moitié de sa moitié éclairée.</p>
             <p data-i18n="phy.s1.p3">L'ombre de la Terre n'y est pour rien : elle n'atteint la Lune que lors des éclipses de Lune.</p>
@@ -205,10 +205,10 @@
     </section>
     <section class="section" id="cycle" aria-labelledby="cycle-title">
       <div class="container">
-        <p class="eyebrow" data-i18n="phy.s2.eyebrow">2 · Le cycle</p>
-        <h2 id="cycle-title" data-i18n="phy.s2.title">Pourquoi 29,5 jours et pas 27,3 ?</h2>
         <div class="article-grid">
           <div class="prose">
+            <p class="eyebrow" data-i18n="phy.s2.eyebrow">2 · Le cycle</p>
+            <h2 id="cycle-title" data-i18n="phy.s2.title">Pourquoi 29,5 jours et pas 27,3 ?</h2>
             <p data-i18n="phy.s2.p1">La Lune fait un tour complet autour de la Terre, par rapport aux étoiles, en 27,32 jours : c'est le mois sidéral. Mais pendant ce temps, la Terre a avancé d'environ 27° sur son orbite autour du Soleil. La direction du Soleil a donc tourné, et la Lune doit encore voyager un peu plus de deux jours pour se retrouver alignée avec lui.</p>
             <p data-i18n="phy.s2.p2">Le retour à la même phase prend donc 29,53 jours en moyenne : c'est le mois synodique, la durée du cycle des phases. Les deux durées sont liées par une relation simple :</p>
             <div class="formula">
@@ -251,21 +251,17 @@
     </section>
     <section class="section section-alt" id="mesurer" aria-labelledby="mesurer-title">
       <div class="container">
-        <p class="eyebrow" data-i18n="phy.s3.eyebrow">3 · Mesurer</p>
-        <h2 id="mesurer-title" data-i18n="phy.s3.title">Élongation, angle de phase et fraction éclairée.</h2>
         <div class="article-grid">
           <div class="prose">
+            <p class="eyebrow" data-i18n="phy.s3.eyebrow">3 · Mesurer</p>
+            <h2 id="mesurer-title" data-i18n="phy.s3.title">Élongation, angle de phase et fraction éclairée.</h2>
             <p data-i18n-html="phy.s3.p1Html">Deux angles décrivent la situation. L'<strong>élongation ψ</strong> est l'écart entre la Lune et le Soleil vu depuis la Terre : 0° à la nouvelle lune, 180° à la pleine lune. L'<strong>angle de phase i</strong> est l'angle Soleil–Lune–Terre, mesuré depuis la Lune : 180° à la nouvelle lune, 0° à la pleine lune.</p>
             <p data-i18n-html="phy.s3.p2Html">Comme le Soleil est environ 390 fois plus loin que la Lune, ses rayons arrivent presque parallèles sur la Terre et sur la Lune, et <em>i</em> ≈ 180° − ψ. C'est l'approximation utilisée par l'application Python. Le site applique la formule exacte de Jean Meeus, qui tient compte des distances <em>R</em> (Terre–Soleil) et Δ (Terre–Lune) : l'écart entre les deux ne dépasse pas 0,15° environ.</p>
-            <div class="formula">
-              <p>tan <em>i</em> = <em>R</em> sin ψ / (Δ − <em>R</em> cos ψ)</p>
-              <p>k = (1 + cos <em>i</em>) / 2</p>
-            </div>
             <p data-i18n="phy.s3.p3">La fraction éclairée k découle de la géométrie du disque. Vu depuis la Terre, le terminateur, la limite entre le jour et la nuit sur la Lune, est une demi-ellipse dont la largeur vaut cos i fois le rayon. La partie éclairée est donc un demi-disque plus ou moins cette demi-ellipse, soit une aire proportionnelle à (1 + cos i) / 2.</p>
-            <p data-i18n="phy.s3.p4">Conséquence : l'illumination change vite autour des quartiers et lentement près de la nouvelle et de la pleine lune. Deux jours avant la pleine lune, la Lune est déjà éclairée à plus de 95 %.</p>
           </div>
-          <figure class="figure-card figure-narrow">
-            <svg viewBox="-1.6 -1.35 3.2 2.7" role="img" aria-labelledby="term-title">
+          <div class="aside-col">
+            <figure class="figure-card figure-narrow">
+              <svg viewBox="-1.6 -1.35 3.2 2.7" role="img" aria-labelledby="term-title">
               <title id="term-title" data-i18n="phy.s3.fig.caption">Exemple : i = 60°, k = (1 + 0,5) / 2 = 75 %.</title>
               <circle r="1" fill="#2A2E52"/>
               <path d="M0 -1A1 1 0 0 1 0 1A0.5 1 0 0 1 0 -1Z" fill="#EFE9DA"/>
@@ -277,16 +273,22 @@
               <text class="svg-small" x="-0.25" y="0.18" text-anchor="middle">cos i</text>
               <text class="svg-small svg-muted" x="0" y="1.25" text-anchor="middle" data-i18n="phy.s3.fig.half">demi-ellipse de largeur cos i</text>
             </svg>
-            <figcaption data-i18n="phy.s3.fig.caption">Exemple : i = 60°, k = (1 + 0,5) / 2 = 75 %.</figcaption>
-          </figure>
+              <figcaption data-i18n="phy.s3.fig.caption">Exemple : i = 60°, k = (1 + 0,5) / 2 = 75 %.</figcaption>
+            </figure>
+            <div class="formula">
+              <p>tan <em>i</em> = <em>R</em> sin ψ / (Δ − <em>R</em> cos ψ)</p>
+              <p>k = (1 + cos <em>i</em>) / 2</p>
+            </div>
+            <p class="aside-note" data-i18n="phy.s3.p4">Conséquence : l'illumination change vite autour des quartiers et lentement près de la nouvelle et de la pleine lune. Deux jours avant la pleine lune, la Lune est déjà éclairée à plus de 95 %.</p>
+          </div>
         </div>
       </div>
     </section>
     <section class="section" id="nommer" aria-labelledby="nommer-title">
       <div class="container">
-        <p class="eyebrow" data-i18n="phy.s4.eyebrow">4 · Nommer</p>
-        <h2 id="nommer-title" data-i18n="phy.s4.title">L'âge de la Lune et le nom des phases.</h2>
         <div class="prose prose-wide">
+            <p class="eyebrow" data-i18n="phy.s4.eyebrow">4 · Nommer</p>
+            <h2 id="nommer-title" data-i18n="phy.s4.title">L'âge de la Lune et le nom des phases.</h2>
           <p data-i18n="phy.s4.p1">Le site, comme l'application, calcule l'âge de la Lune à partir de l'écart de longitude écliptique entre la Lune et le Soleil, ramené entre 0 et 360°, puis converti en jours avec la durée moyenne du mois synodique :</p>
           <div class="formula"><p data-i18n-html="phy.s4.fHtml">âge = (λ<sub>☾</sub> − λ<sub>☉</sub>) / 360° × 29,53058867 j</p></div>
           <p data-i18n="phy.s4.p2">Le nom de la phase est ensuite déduit de cet âge. Les quatre phases principales sont en réalité des instants précis : la nouvelle lune quand l'écart de longitude vaut 0°, le premier quartier à 90°, la pleine lune à 180°, le dernier quartier à 270°. Les noms « Pleine Lune » ou « Premier quartier » couvrent ici une petite plage de jours autour de ces instants, comme dans l'application.</p>
@@ -296,10 +298,10 @@
     </section>
     <section class="section section-alt" id="eclipses" aria-labelledby="eclipses-title">
       <div class="container">
-        <p class="eyebrow" data-i18n="phy.s5.eyebrow">5 · Éclipses</p>
-        <h2 id="eclipses-title" data-i18n="phy.s5.title">Pourquoi n'y a-t-il pas d'éclipse chaque mois ?</h2>
         <div class="article-grid">
           <div class="prose">
+            <p class="eyebrow" data-i18n="phy.s5.eyebrow">5 · Éclipses</p>
+            <h2 id="eclipses-title" data-i18n="phy.s5.title">Pourquoi n'y a-t-il pas d'éclipse chaque mois ?</h2>
             <p data-i18n="phy.s5.p1">L'orbite de la Lune est inclinée d'environ 5° sur le plan de l'orbite terrestre, l'écliptique. À la plupart des nouvelles lunes, la Lune passe donc un peu au-dessus ou au-dessous du Soleil ; à la plupart des pleines lunes, un peu au-dessus ou au-dessous de l'ombre de la Terre.</p>
             <p data-i18n="phy.s5.p2">Une éclipse n'a lieu que si la nouvelle ou la pleine lune tombe près d'un des deux points où l'orbite lunaire traverse l'écliptique : les nœuds. Cela se produit pendant deux « saisons d'éclipses » par an, espacées d'environ 173 jours. Il y a ainsi au moins quatre éclipses par an : deux de Soleil et deux de Lune.</p>
           </div>
@@ -324,10 +326,10 @@
     </section>
     <section class="section" id="point-de-vue" aria-labelledby="point-de-vue-title">
       <div class="container">
-        <p class="eyebrow" data-i18n="phy.s6.eyebrow">6 · Point de vue</p>
-        <h2 id="point-de-vue-title" data-i18n="phy.s6.title">Face visible, libration et hémisphère sud.</h2>
         <div class="article-grid">
           <div class="prose">
+            <p class="eyebrow" data-i18n="phy.s6.eyebrow">6 · Point de vue</p>
+            <h2 id="point-de-vue-title" data-i18n="phy.s6.title">Face visible, libration et hémisphère sud.</h2>
             <p data-i18n="phy.s6.p1">La Lune tourne sur elle-même en 27,32 jours, exactement le temps d'un tour autour de la Terre : c'est la rotation synchrone, due aux effets de marée. Elle nous montre donc toujours la même face. Grâce à de petits balancements apparents, la libration, on en voit toutefois environ 59 % au fil des mois.</p>
             <p data-i18n="phy.s6.p2">La forme d'une phase ne dépend pas du lieu d'observation, mais son orientation, si. Depuis l'hémisphère sud, à Madagascar par exemple, on voit la Lune « la tête en bas » par rapport à l'hémisphère nord : le croissant qui suit la nouvelle lune est éclairé à gauche, et non à droite. Près de l'équateur, le croissant paraît souvent presque couché. C'est ce que reproduit l'interrupteur « Vue depuis l'hémisphère sud » du calculateur.</p>
           </div>
@@ -349,10 +351,10 @@
     </section>
     <section class="section section-alt" id="lumiere-cendree" aria-labelledby="lumiere-cendree-title">
       <div class="container">
-        <p class="eyebrow" data-i18n="phy.s7.eyebrow">7 · Lumière cendrée</p>
-        <h2 id="lumiere-cendree-title" data-i18n="phy.s7.title">Pourquoi la partie sombre est parfois visible.</h2>
         <div class="article-grid">
           <div class="prose">
+            <p class="eyebrow" data-i18n="phy.s7.eyebrow">7 · Lumière cendrée</p>
+            <h2 id="lumiere-cendree-title" data-i18n="phy.s7.title">Pourquoi la partie sombre est parfois visible.</h2>
             <p data-i18n="phy.s7.p1">Quelques jours avant ou après la nouvelle lune, on devine souvent la partie non éclairée du disque. C'est la lumière cendrée : la lumière du Soleil réfléchie par la Terre, qui éclaire faiblement la Lune. Vue depuis la Lune, la Terre est alors presque « pleine », d'où ce reflet. Léonard de Vinci en avait déjà donné l'explication au début du XVIe siècle.</p>
             <p data-i18n="phy.s7.p2">La Lune 3D du site imite ce reflet par une faible lueur bleutée sur sa partie nocturne.</p>
           </div>
@@ -369,16 +371,10 @@
     </section>
     <section class="section" id="calcul" aria-labelledby="calcul-title">
       <div class="container">
-        <p class="eyebrow" data-i18n="phy.s8.eyebrow">8 · Le calcul</p>
-        <h2 id="calcul-title" data-i18n="phy.s8.title">Comment le site calcule.</h2>
         <div class="article-grid">
-          <ol class="steps">
-            <li class="step"><span class="step-num" aria-hidden="true">1</span><div><h3 data-i18n="phy.s8.1.title">Le temps</h3><p data-i18n="phy.s8.1.text">La date choisie est prise à midi, heure locale, convertie en temps universel, puis en temps terrestre (correction ΔT, environ une minute aujourd'hui).</p></div></li>
-            <li class="step"><span class="step-num" aria-hidden="true">2</span><div><h3 data-i18n="phy.s8.2.title">Le Soleil</h3><p data-i18n="phy.s8.2.text">Position apparente du Soleil selon le chapitre 25 de Jean Meeus, précise à environ 0,01°.</p></div></li>
-            <li class="step"><span class="step-num" aria-hidden="true">3</span><div><h3 data-i18n="phy.s8.3.title">La Lune</h3><p data-i18n="phy.s8.3.text">Position de la Lune selon le chapitre 47, avec les séries complètes de termes périodiques : une précision de l'ordre de 10 secondes d'arc.</p></div></li>
-            <li class="step"><span class="step-num" aria-hidden="true">4</span><div><h3 data-i18n="phy.s8.4.title">La phase</h3><p data-i18n="phy.s8.4.text">Élongation, angle de phase et fraction éclairée selon le chapitre 48. Les prochaines pleine et nouvelle lune sont les instants où l'écart de longitude vaut 180° et 0°.</p></div></li>
-          </ol>
           <div class="prose">
+            <p class="eyebrow" data-i18n="phy.s8.eyebrow">8 · Le calcul</p>
+            <h2 id="calcul-title" data-i18n="phy.s8.title">Comment le site calcule.</h2>
             <p data-i18n="phy.s8.p1">Comparé à la classe Python (éphémérides Astropy) sur 120 dates entre 1950 et 2100, l'écart maximal est de 0,14 % d'illumination, 0,16° d'angle de phase et 0,002 jour d'âge, avec des noms de phase identiques.</p>
             <div class="cta-row">
               <a class="btn btn-gold" href="index.html#calculateur" data-i18n="phy.s8.cta">Essayer le calculateur</a>
@@ -391,6 +387,12 @@
               <li><a href="https://www.astropy.org/" data-i18n="phy.s8.src2">Astropy — éphémérides utilisées par l'application Python</a></li>
             </ul>
           </div>
+          <ol class="steps">
+            <li class="step"><span class="step-num" aria-hidden="true">1</span><div><h3 data-i18n="phy.s8.1.title">Le temps</h3><p data-i18n="phy.s8.1.text">La date choisie est prise à midi, heure locale, convertie en temps universel, puis en temps terrestre (correction ΔT, environ une minute aujourd'hui).</p></div></li>
+            <li class="step"><span class="step-num" aria-hidden="true">2</span><div><h3 data-i18n="phy.s8.2.title">Le Soleil</h3><p data-i18n="phy.s8.2.text">Position apparente du Soleil selon le chapitre 25 de Jean Meeus, précise à environ 0,01°.</p></div></li>
+            <li class="step"><span class="step-num" aria-hidden="true">3</span><div><h3 data-i18n="phy.s8.3.title">La Lune</h3><p data-i18n="phy.s8.3.text">Position de la Lune selon le chapitre 47, avec les séries complètes de termes périodiques : une précision de l'ordre de 10 secondes d'arc.</p></div></li>
+            <li class="step"><span class="step-num" aria-hidden="true">4</span><div><h3 data-i18n="phy.s8.4.title">La phase</h3><p data-i18n="phy.s8.4.text">Élongation, angle de phase et fraction éclairée selon le chapitre 48. Les prochaines pleine et nouvelle lune sont les instants où l'écart de longitude vaut 180° et 0°.</p></div></li>
+          </ol>
         </div>
       </div>
     </section>
