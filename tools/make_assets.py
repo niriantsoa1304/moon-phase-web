@@ -5,6 +5,7 @@
 - site/assets/moon-poster.webp : Lune pleine, même rendu que le shader de moon3d.js
   (image fixe affichée avant la 3D, et repli sans WebGL).
 - site/assets/icon-192.png, icon-512.png, apple-touch-icon.png
+- site/assets/icon-maskable-512.png : icône Android (Lune dans la zone sûre de 80 %)
 - site/assets/og-image.jpg (1200×630) pour Open Graph / Twitter Card.
 - site/assets/sky-{800,1280,1920}.webp : fond du hero, à partir de la photo Unsplash
   de Phil Botha (phil-botha-a0TJ3hy-UD8-unsplash.jpg à la racine du projet, si présente).
@@ -75,6 +76,15 @@ def make_sky():
         photo.resize((w, h), Image.LANCZOS).save(ASSETS / f"sky-{w}.webp", quality=62, method=6)
 
 
+def make_maskable_icon(size=512):
+    """Android découpe l'icône (cercle, carré arrondi…) : le disque tient dans ~56 % de la largeur."""
+    icon = Image.new("RGBA", (size, size), BG + (255,))
+    moon = render_moon(int(size * 0.7))
+    off = (size - moon.width) // 2
+    icon.alpha_composite(moon, (off, off))
+    icon.convert("RGB").quantize(96, dither=Image.Dither.FLOYDSTEINBERG).save(ASSETS / "icon-maskable-512.png", optimize=True)
+
+
 def main(fraunces, plex_sans, plex_mono):
     ASSETS.mkdir(parents=True, exist_ok=True)
     if SKY_PHOTO.exists():
@@ -88,6 +98,8 @@ def main(fraunces, plex_sans, plex_mono):
         off = (size - moon.width) // 2
         icon.alpha_composite(moon, (off, off))
         icon.convert("RGB").quantize(96, dither=Image.Dither.FLOYDSTEINBERG).save(ASSETS / name, optimize=True)
+
+    make_maskable_icon()
 
     W, H = 1200, 630
     og = Image.new("RGBA", (W, H), BG + (255,))

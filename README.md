@@ -25,7 +25,8 @@ site/
   js/moon3d.js            Lune 3D WebGL (issue de Moon3d.js)
   js/moon-svg.js          tracé SVG des phases (cartes, repli sans WebGL)
   js/translations.js      textes FR / EN
-  js/app.js               calculateur, langue, URL, partage, menu
+  js/app.js               calculateur, langue, URL, partage, menu, installation
+  sw.js                   service worker (hors connexion)
   assets/                 texture, image fixe de la Lune, icônes, image de partage
 tools/make_assets.py      régénère les images de site/assets à partir de moon.jpg
 ```
@@ -37,6 +38,18 @@ tools/make_assets.py      régénère les images de site/assets à partir de moo
   `Python/moon_phase_calculator.py`. Les noms de phase reprennent les seuils de `get_phase_name()`.
 - Comparaison avec la classe Python (Astropy) sur 120 dates entre 1950 et 2100, à 00:00 UTC :
   écart maximum de 0,14 % d'illumination, 0,16° d'angle de phase et 0,002 jour d'âge, noms de phase identiques.
+
+## Application installable (mobile)
+
+Le site est une PWA : `site/manifest.webmanifest` + `site/sw.js` (service worker).
+
+- Sur Android (Chrome, Edge, Samsung Internet), le bouton « Installer l'application » du hero ouvre
+  l'invite d'installation ; ailleurs (iPhone, Firefox), il affiche la marche à suivre.
+- Une fois visité, le site fonctionne hors connexion (calcul, Lune 3D, traductions).
+- Sur ordinateur, le bouton reste « Télécharger l'application » (application Python).
+- Après une modification des fichiers du site, les visiteurs reçoivent la nouvelle version au
+  chargement suivant. Pour forcer le renouvellement complet du cache, changer `CACHE` dans `sw.js`.
+- Le service worker ne fonctionne qu'en HTTPS (GitHub Pages, Netlify) ou sur `localhost`.
 
 ## À compléter avant publication
 

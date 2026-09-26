@@ -29,6 +29,10 @@
   <link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Moon Phase">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -207,7 +211,11 @@
         </div>
 
         <div class="hero-cta">
-          <a class="btn btn-gold" href="https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia/archive/refs/heads/main.zip" data-i18n="cta.download">Télécharger l'application</a>
+          <a class="btn btn-gold download-btn" href="https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia/archive/refs/heads/main.zip" data-i18n="cta.download">Télécharger l'application</a>
+          <button class="btn btn-gold install-btn" type="button" id="install" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+            <span data-i18n="pwa.button">Installer l'application</span>
+          </button>
           <a class="btn btn-outline" href="https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia" data-i18n="cta.source">Voir le code source</a>
         </div>
       </div>
@@ -346,6 +354,13 @@
       </div>
     </section>
   </main>
+
+  <dialog class="install-dialog" id="install-help" aria-labelledby="install-help-title">
+    <h2 id="install-help-title" data-i18n="pwa.title">Installer l'application</h2>
+    <p id="install-help-text"></p>
+    <p class="install-dialog-note" data-i18n="pwa.note">Elle s'ouvre ensuite en plein écran et fonctionne sans connexion.</p>
+    <form method="dialog"><button class="btn btn-gold" data-i18n="pwa.ok">Compris</button></form>
+  </dialog>
 
   <footer class="site-footer">
     <div class="container footer-grid">
