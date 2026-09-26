@@ -9,8 +9,8 @@ Site statique (HTML, CSS, JavaScript en modules ES), sans framework ni étape de
 
 ```bash
 cd site
-python -m http.server 8000
-# puis ouvrir http://localhost:8000
+python -m http.server 8765
+# puis ouvrir http://localhost:8765  (n'importe quel port libre convient)
 ```
 
 Les modules ES ne se chargent pas depuis `file://` : il faut passer par un serveur local.
