@@ -66,7 +66,7 @@ for a, b in nav_links.items():
     footer = footer.replace(f'href="{a}"', f'href="{b}"')
 phys_li = f'<li><a href="physique.html" aria-current="page" {tm("nav.physics")}</a></li>'
 # Le lien « Physique » existe déjà dans index.html : on le marque comme page courante.
-old_li = '<li><a href="physique.html" data-i18n="nav.physics">Physique</a></li>'
+old_li = f'<li><a href="physique.html" {tm("nav.physics")}</a></li>'
 assert header.count(old_li) == 1 and footer.count(old_li) == 1
 header = header.replace(old_li, phys_li)
 footer = footer.replace(old_li, phys_li)
