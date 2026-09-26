@@ -182,12 +182,17 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 /* ---------- Fond : ciel étoilé dans chaque section ----------
    Photo Phil Botha (Unsplash) en entier dans chaque section (montagnes en bas),
    sous un voile qui garde le texte lisible. */
-:root { --sky: url("../assets/sky-1280.webp"); }
+:root { --sky: url("../assets/sky-800.webp"); }
 .hero, .section {
-  --veil: linear-gradient(180deg, rgba(13, 15, 28, 0.5), rgba(13, 15, 28, 0.7));
-  background: var(--veil), var(--sky) center bottom / cover no-repeat, var(--bg);
+  --veil: linear-gradient(180deg, rgba(13, 15, 28, 0.06), rgba(13, 15, 28, 0.18));
+  /* La photo Unsplash est appliquée indépendamment à chaque écran. */
+  background-color: var(--bg);
+  background-image: var(--veil), var(--sky);
+  background-position: center, center bottom;
+  background-size: auto, cover;
+  background-repeat: no-repeat;
 }
-.section-alt { --veil: linear-gradient(180deg, rgba(17, 20, 39, 0.62), rgba(17, 20, 39, 0.78)); }
+.section-alt { --veil: linear-gradient(180deg, rgba(17, 20, 39, 0.1), rgba(17, 20, 39, 0.24)); }
 
 /* ---------- Hero ---------- */
 .hero { padding-block: var(--s-10) var(--s-16); }
@@ -434,7 +439,7 @@ kbd {
    Tablette ≥ 768 px
    ========================================================================== */
 @media (min-width: 768px) {
-  :root { --gutter: var(--s-8); --header-h: 80px; --footer-h: 690px; }
+  :root { --gutter: var(--s-8); --header-h: 80px; --footer-h: 690px; --sky: url("../assets/sky-1280.webp"); }
   .logo-long { display: inline; }
   .hero { padding-block: var(--s-16) var(--s-20); }
   .hero-grid { max-width: 680px; margin-inline: auto; }
@@ -492,7 +497,7 @@ kbd {
   .hero {
     padding-block: var(--s-5);
     /* Texte à gauche sur un voile plus sombre, ciel plus visible à droite derrière la Lune. */
-    --veil: linear-gradient(90deg, rgba(13, 15, 28, 0.8) 0%, rgba(13, 15, 28, 0.6) 42%, rgba(13, 15, 28, 0.3) 100%);
+    --veil: linear-gradient(90deg, rgba(13, 15, 28, 0.28) 0%, rgba(13, 15, 28, 0.16) 42%, rgba(13, 15, 28, 0.04) 100%);
   }
   .hero-grid {
     display: grid; max-width: calc(1248px + 2 * var(--gutter)); gap: 0 var(--s-12); /* même largeur que .container */
@@ -562,3 +567,92 @@ kbd {
   .footer-brand { grid-column: auto; }
 }
 
+/* ==========================================================================
+   Animations d'entrée — une par section
+   Actives seulement si JavaScript est là et que le visiteur n'a pas demandé
+   de réduire les animations (classe .motion posée sur <html> par app.js).
+   Chaque section reçoit .in-view quand elle arrive à l'écran.
+   ========================================================================== */
+.motion :is(.hero, .section) { overflow-x: clip; } /* les éléments qui arrivent de côté ne créent pas de défilement horizontal */
+@keyframes rise      { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes fade      { from { opacity: 0; } to { opacity: 1; } }
+@keyframes type-in   { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes lines-in  { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes blink     { 50% { opacity: 0; } }
+
+/* 1. Hero — lever de Lune */
+@keyframes unblur    { from { opacity: 0; filter: blur(10px); transform: translateY(16px); } to { opacity: 1; filter: none; transform: none; } }
+@keyframes moonrise  { from { opacity: 0; transform: translateY(18%) scale(0.86); } 60% { opacity: 1; } to { opacity: 1; transform: none; } }
+.motion .hero :is(.eyebrow, h1, .lede, .calc-bg, .calc-controls, .calc-results, .calc-foot, .today-big, .hero-cta, .moon-box, figcaption) { opacity: 0; }
+.motion .hero.in-view .eyebrow  { opacity: 1; animation: type-in 0.9s steps(28) both; }
+.motion .hero.in-view h1        { animation: unblur 1s 0.15s cubic-bezier(.2,.7,.2,1) both; }
+.motion .hero.in-view .lede     { animation: rise 0.8s 0.35s ease-out both; }
+.motion .hero.in-view .calc-bg,
+.motion .hero.in-view .calc-controls { animation: rise 0.8s 0.5s ease-out both; }
+.motion .hero.in-view .calc-results  { animation: rise 0.8s 0.62s ease-out both; }
+.motion .hero.in-view :is(.calc-foot, .today-big) { animation: rise 0.8s 0.74s ease-out both; }
+.motion .hero.in-view .hero-cta { animation: rise 0.8s 0.86s ease-out both; }
+.motion .hero.in-view .moon-box { animation: moonrise 1.6s 0.2s cubic-bezier(.16,.8,.3,1) both; }
+.motion .hero.in-view figcaption { animation: fade 1s 1.1s ease-out both; }
+
+/* 2. Les huit phases — les cartes se retournent l'une après l'autre, comme le cycle */
+@keyframes card-flip { from { opacity: 0; transform: perspective(700px) rotateY(-80deg) translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes moon-spin { from { transform: rotate(-180deg) scale(0.5); } to { transform: none; } }
+@keyframes spread    { from { opacity: 0; letter-spacing: 0.12em; } to { opacity: 1; letter-spacing: -0.01em; } }
+.motion #phases :is(h2, .section-lede, .phase-card) { opacity: 0; }
+.motion #phases.in-view h2 { animation: spread 1s cubic-bezier(.2,.7,.2,1) both; }
+.motion #phases.in-view .section-lede { animation: fade 0.8s 0.3s both; }
+.motion #phases.in-view .phase-card { animation: card-flip 0.7s calc(0.25s + var(--i, 0) * 0.09s) cubic-bezier(.2,.8,.3,1) both; }
+.motion #phases.in-view .phase-moon { animation: moon-spin 0.9s calc(0.3s + var(--i, 0) * 0.09s) cubic-bezier(.2,.8,.3,1) both; }
+
+/* 3. Fonctionnalités — constellation : les cartes convergent depuis des points épars */
+@keyframes converge  { from { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)) rotate(var(--rot, 0)) scale(0.85); } to { opacity: 1; transform: none; } }
+@keyframes glow      { 0%, 100% { box-shadow: 0 0 0 0 rgba(232, 194, 122, 0); } 40% { box-shadow: 0 0 22px 4px rgba(232, 194, 122, 0.45); } }
+@keyframes wipe-left { from { clip-path: inset(0 100% 0 0); opacity: 0.4; } to { clip-path: inset(0 0 0 0); opacity: 1; } }
+.motion #fonctionnalites :is(.eyebrow, h2, .feature) { opacity: 0; }
+.motion #fonctionnalites.in-view .eyebrow { opacity: 1; animation: type-in 0.7s steps(16) both; }
+.motion #fonctionnalites.in-view h2 { opacity: 1; animation: wipe-left 0.9s 0.15s cubic-bezier(.6,0,.2,1) both; }
+.motion #fonctionnalites.in-view .feature { animation: converge 1s calc(0.3s + var(--i, 0) * 0.08s) cubic-bezier(.16,.8,.3,1) both; }
+.motion #fonctionnalites.in-view .feature-icon { animation: glow 1.2s calc(1.1s + var(--i, 0) * 0.12s) ease-out both; }
+
+/* 4. Comment ça marche — orbites, traits qui se dessinent, formule écrite ligne par ligne */
+@keyframes orbit     { from { opacity: 0; transform: rotate(-200deg) translateX(18px) rotate(200deg) scale(0.4); } to { opacity: 1; transform: none; } }
+@keyframes slide-in  { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes draw      { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes wipe-up   { from { clip-path: inset(100% 0 0 0); transform: translateY(12px); } to { clip-path: inset(0 0 0 0); transform: none; } }
+.motion #comment :is(.eyebrow, h2, .body-lg, .formula p, .step-num, .step > div) { opacity: 0; }
+.motion #comment .step { position: relative; border-bottom-color: transparent; }
+.motion #comment .step::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+  background: var(--border); transform: scaleX(0); transform-origin: left;
+}
+.motion #comment.in-view .eyebrow { opacity: 1; animation: type-in 0.7s steps(17) both; }
+.motion #comment.in-view h2 { opacity: 1; animation: wipe-up 0.9s 0.1s cubic-bezier(.2,.7,.2,1) both; }
+.motion #comment.in-view .body-lg { animation: rise 0.8s 0.3s ease-out both; }
+.motion #comment.in-view .formula p { opacity: 1; animation: type-in 1.1s calc(0.7s + var(--i, 0) * 1.1s) steps(40) both; }
+.motion #comment.in-view .step-num { animation: orbit 0.9s calc(0.2s + var(--i, 0) * 0.18s) cubic-bezier(.2,.8,.3,1) both; }
+.motion #comment.in-view .step > div { animation: slide-in 0.7s calc(0.35s + var(--i, 0) * 0.18s) ease-out both; }
+.motion #comment.in-view .step::after { animation: draw 0.8s calc(0.45s + var(--i, 0) * 0.18s) ease-out both; }
+
+/* 5. Utiliser le code — le terminal démarre et le code s'écrit */
+@keyframes boot      { from { opacity: 0; transform: translateY(16px) scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes dot-on    { 50% { background: var(--accent); } }
+@keyframes key-press { 0%, 100% { transform: none; box-shadow: none; } 40% { transform: translateY(2px) scale(0.92); box-shadow: 0 0 0 3px rgba(232, 194, 122, 0.3); border-color: var(--accent); } }
+.motion #code :is(.eyebrow, h2, .body-lg, .shortcuts-title, .shortcuts, .terminal, .code code, .github-cta) { opacity: 0; }
+.motion #code.in-view .eyebrow { opacity: 1; animation: type-in 0.7s steps(16) both; }
+.motion #code.in-view h2 { animation: rise 0.8s 0.1s ease-out both; }
+.motion #code.in-view :is(.body-lg, .shortcuts-title, .shortcuts) { animation: fade 0.8s 0.3s both; }
+.motion #code.in-view kbd { animation: key-press 0.45s calc(1.2s + var(--i, 0) * 0.35s) ease-in-out both; }
+.motion #code.in-view .terminal { animation: boot 0.7s 0.2s cubic-bezier(.2,.8,.3,1) both; }
+.motion #code.in-view .dots i { animation: dot-on 0.5s calc(0.6s + var(--i, 0) * 0.15s) ease-in-out both; }
+.motion #code .code code { display: block; } /* clip-path sur un élément en ligne ne couvrirait que la 1re ligne */
+.motion #code.in-view .code code { opacity: 1; animation: lines-in 1.6s 1s steps(8, end) both; }
+.motion #code.in-view .code code::after {
+  content: "▋"; margin-left: 2px; color: var(--accent);
+  animation: blink 1s 2.6s steps(1) 6 both;
+}
+.motion #code.in-view .github-cta { animation: rise 0.7s 0.5s ease-out both; }
+
+/* 6. Pied de page — colonnes en cascade */
+.motion .site-footer :is(.footer-brand, .footer-col, .footer-bottom) { opacity: 0; }
+.motion .site-footer.in-view :is(.footer-brand, .footer-col, .footer-bottom) { animation: rise 0.8s calc(var(--i, 0) * 0.12s) ease-out both; }

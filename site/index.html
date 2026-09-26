@@ -34,8 +34,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
   <link rel="preload" href="assets/moon-poster.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="css/styles.css?v=2026-09-26b">
+  <link rel="stylesheet" href="css/styles.css?v=2026-09-26e">
   <script type="module" src="js/app.js"></script>
+  <script>
+    /* Animations d'entrée : cachées avant le premier affichage pour éviter un clignotement ;
+       retirées si app.js ne prend pas le relais en 3 s. */
+    (function (d) {
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+      d.classList.add("motion");
+      setTimeout(function () { if (!d.dataset.reveal) d.classList.remove("motion"); }, 3000);
+    })(document.documentElement);
+  </script>
 
   <script type="application/ld+json">
   {

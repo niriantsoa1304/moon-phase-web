@@ -301,6 +301,39 @@ function initControls() {
   });
 }
 
+/* ---------- Animations d'entrée (styles dans styles.css) ---------- */
+/* Points de départ des cartes « Fonctionnalités » (effet constellation), en px et degrés. */
+const CONSTELLATION = [[-90, -60, -9], [0, -90, 6], [90, -50, 10], [-110, 50, 7], [20, 80, -6], [100, 70, -11]];
+
+function initReveal() {
+  const root = document.documentElement;
+  if (!root.classList.contains("motion")) return;
+  const stagger = (sel) => $$(sel).forEach((el, i) => el.style.setProperty("--i", i));
+  stagger(".phase-card");
+  stagger(".feature");
+  stagger("#comment .step");
+  stagger(".formula p");
+  stagger("#code kbd");
+  stagger(".dots i");
+  stagger(".site-footer :is(.footer-brand, .footer-col, .footer-bottom)");
+  $$(".feature").forEach((el, i) => {
+    const [dx, dy, rot] = CONSTELLATION[i % CONSTELLATION.length];
+    el.style.setProperty("--dx", `${dx}px`);
+    el.style.setProperty("--dy", `${dy}px`);
+    el.style.setProperty("--rot", `${rot}deg`);
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      e.target.classList.add("in-view");
+      io.unobserve(e.target);
+    }
+  }, { threshold: 0.15 });
+  for (const el of $$(".hero, .section, .site-footer")) io.observe(el);
+  root.dataset.reveal = "on";
+}
+
 /* ---------- Démarrage ---------- */
 function init() {
   const params = new URLSearchParams(location.search);
@@ -311,6 +344,7 @@ function init() {
 
   initMenu();
   initControls();
+  initReveal();
   renderPhaseIcons();
   applyLang(detectLang()); // appelle render()
 
