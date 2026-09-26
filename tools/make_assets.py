@@ -6,6 +6,8 @@
   (image fixe affichée avant la 3D, et repli sans WebGL).
 - site/assets/icon-192.png, icon-512.png, apple-touch-icon.png
 - site/assets/og-image.jpg (1200×630) pour Open Graph / Twitter Card.
+- site/assets/sky-{800,1280,1920}.webp : fond du hero, à partir de la photo Unsplash
+  de Phil Botha (phil-botha-a0TJ3hy-UD8-unsplash.jpg à la racine du projet, si présente).
 
 Dépendances : pip install numpy pillow
 """
@@ -62,8 +64,21 @@ def glow(size, radius, strength=90):
     return g.filter(ImageFilter.GaussianBlur(radius * 0.18))
 
 
+SKY_PHOTO = ROOT / "phil-botha-a0TJ3hy-UD8-unsplash.jpg"
+
+
+def make_sky():
+    """Fond du hero en trois largeurs (mobile, tablette, ordinateur)."""
+    photo = Image.open(SKY_PHOTO).convert("RGB")
+    for w in (800, 1280, 1920):
+        h = round(w * photo.height / photo.width)
+        photo.resize((w, h), Image.LANCZOS).save(ASSETS / f"sky-{w}.webp", quality=62, method=6)
+
+
 def main(fraunces, plex_sans, plex_mono):
     ASSETS.mkdir(parents=True, exist_ok=True)
+    if SKY_PHOTO.exists():
+        make_sky()
 
     render_moon(480).save(ASSETS / "moon-poster.webp", quality=72, method=6)
 

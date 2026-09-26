@@ -180,7 +180,13 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .site-footer { min-height: var(--footer-h); }
 
 /* ---------- Hero ---------- */
-.hero { padding-block: var(--s-10) var(--s-16); }
+/* Fond : ciel étoilé (photo Phil Botha, Unsplash), assombri pour la lisibilité du texte. */
+.hero {
+  --sky: url("../assets/sky-800.webp");
+  --veil: linear-gradient(180deg, rgba(13, 15, 28, 0.55) 0%, rgba(13, 15, 28, 0.7) 55%, var(--bg) 100%);
+  padding-block: var(--s-10) var(--s-16);
+  background: var(--veil), var(--sky) center 35% / cover no-repeat, var(--bg);
+}
 .hero-grid { display: flex; flex-direction: column; gap: var(--s-8); }
 .hero-intro h1 { margin-bottom: var(--s-4); }
 .hero-intro .eyebrow { margin-bottom: var(--s-5); }
@@ -409,7 +415,7 @@ kbd {
 @media (min-width: 768px) {
   :root { --gutter: var(--s-8); --header-h: 80px; --footer-h: 650px; }
   .logo-long { display: inline; }
-  .hero { padding-block: var(--s-16) var(--s-20); }
+  .hero { padding-block: var(--s-16) var(--s-20); --sky: url("../assets/sky-1280.webp"); }
   .hero-grid { max-width: 680px; margin-inline: auto; }
   .lede, .body-lg { font-size: 1.125rem; }
   .calc { padding: var(--s-6); }
@@ -454,7 +460,14 @@ kbd {
   html { scroll-snap-type: y mandatory; }
 
   /* Hero en deux colonnes : le contenu de .calc est placé dans la grille */
-  .hero { padding-block: var(--s-5); }
+  .hero {
+    padding-block: var(--s-5);
+    --sky: url("../assets/sky-1920.webp");
+    /* Texte à gauche sur fond sombre, ciel plus visible à droite derrière la Lune. */
+    --veil:
+      linear-gradient(90deg, rgba(13, 15, 28, 0.9) 0%, rgba(13, 15, 28, 0.72) 42%, rgba(13, 15, 28, 0.3) 100%),
+      linear-gradient(180deg, transparent 70%, var(--bg) 100%);
+  }
   .hero-grid {
     display: grid; max-width: none; gap: 0 var(--s-12);
     grid-template-columns: 640px minmax(0, 1fr);

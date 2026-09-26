@@ -122,6 +122,7 @@ export const translations = {
     "footer.astropy": "Astropy — éphémérides de l'application",
     "footer.meeus": "Jean Meeus, Astronomical Algorithms — calcul en ligne",
     "footer.privacy": "Tous les calculs sont faits dans votre navigateur.",
+    "footer.photo": "Photo du ciel : Phil Botha / Unsplash",
     "footer.top": "Retour en haut",
   },
 
@@ -243,6 +244,7 @@ export const translations = {
     "footer.astropy": "Astropy — the app's ephemerides",
     "footer.meeus": "Jean Meeus, Astronomical Algorithms — online calculation",
     "footer.privacy": "All calculations run in your browser.",
+    "footer.photo": "Sky photo: Phil Botha / Unsplash",
     "footer.top": "Back to top",
   },
 };
