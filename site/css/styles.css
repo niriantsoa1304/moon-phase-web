@@ -413,6 +413,23 @@ kbd {
 .footer-top:hover { border-color: var(--accent); }
 
 /* ==========================================================================
+   Mobile uniquement (< 768 px) : en-têtes de section et pied de page centrés
+   ========================================================================== */
+@media (max-width: 767px) {
+  .hero-intro, .section-head, .two-col > div:first-child { text-align: center; }
+  .hero-intro .lede, .section-lede, .two-col .body-lg { margin-inline: auto; max-width: 36ch; }
+  .shortcuts { justify-content: center; }
+  .hero-intro :is(.eyebrow, h1), .section-head :is(.eyebrow, h2), .two-col > div:first-child :is(.eyebrow, h2) { text-wrap: balance; }
+  .hero-intro .lede, .section-lede, .two-col .body-lg, .footer-tagline { text-wrap: pretty; }
+  .formula { text-align: left; }
+
+  .footer-brand { text-align: center; }
+  .footer-tagline { margin-inline: auto; }
+  .footer-author { border-left: 1px solid var(--border); border-top: 2px solid var(--accent); border-radius: 0 0 var(--r-md) var(--r-md); padding: var(--s-4); }
+  .footer-copy { text-align: center; }
+}
+
+/* ==========================================================================
    Tablette ≥ 768 px
    ========================================================================== */
 @media (min-width: 768px) {

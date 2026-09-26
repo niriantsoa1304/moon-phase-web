@@ -19,7 +19,7 @@ export const translations = {
     "nav.closeMenu": "Fermer le menu",
     "lang.label": "Langue",
 
-    "hero.eyebrow": "Projet open source · Python & Astropy",
+    "hero.eyebrow": "Projet open source\u00a0· Python & Astropy",
     "hero.title": "La phase de la Lune, pour n'importe quelle date.",
     "hero.lede": "Nom de la phase, illumination, angle de phase et âge de la Lune — calculés à partir des positions réelles du Soleil et de la Lune.",
 
@@ -141,7 +141,7 @@ export const translations = {
     "nav.closeMenu": "Close menu",
     "lang.label": "Language",
 
-    "hero.eyebrow": "Open-source project · Python & Astropy",
+    "hero.eyebrow": "Open-source project\u00a0· Python & Astropy",
     "hero.title": "The Moon's phase, for any date.",
     "hero.lede": "Phase name, illumination, phase angle and Moon age — computed from the actual positions of the Sun and the Moon.",
 
