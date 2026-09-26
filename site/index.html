@@ -69,6 +69,8 @@
     <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
     <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"/></symbol>
     <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m4 17 6-6-6-6M12 19h8"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></symbol>
     <symbol id="i-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></symbol>
     <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
     <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
@@ -359,7 +361,7 @@
         </div>
       </div>
 
-      <nav class="footer-col" aria-labelledby="footer-nav-title">
+      <nav class="footer-col nav-col" aria-labelledby="footer-nav-title">
         <h2 class="footer-title" id="footer-nav-title" data-i18n="footer.nav">Navigation</h2>
         <ul role="list">
           <li><a href="#calculateur" data-i18n="nav.calculator">Calculateur</a></li>
@@ -374,29 +376,39 @@
         <h2 class="footer-title" data-i18n="footer.project">Projet</h2>
         <ul role="list">
           <li><a href="https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia">
-            <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span data-i18n="footer.source">Code source</span></a></li>
-          <li><a href="https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia/archive/refs/heads/main.zip" data-i18n="cta.download">Télécharger l'application</a></li>
-          <li><a href="https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia/issues" data-i18n="footer.issues">Signaler un problème</a></li>
+            <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span data-i18n="footer.source">Code source</span><svg class="icon footer-arrow" aria-hidden="true"><use href="#i-external"/></svg></a></li>
+          <li><a href="https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia/archive/refs/heads/main.zip">
+            <span data-i18n="cta.download">Télécharger l'application</span><svg class="icon footer-arrow" aria-hidden="true"><use href="#i-download"/></svg></a></li>
+          <li><a href="https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia/issues">
+            <span data-i18n="footer.issues">Signaler un problème</span><svg class="icon footer-arrow" aria-hidden="true"><use href="#i-external"/></svg></a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h2 class="footer-title" data-i18n="footer.refs">Références</h2>
         <ul role="list">
-          <li><a href="https://www.astropy.org/" data-i18n="footer.astropy">Astropy — éphémérides de l'application</a></li>
+          <li><a href="https://www.astropy.org/">
+            <span data-i18n="footer.astropy">Astropy — éphémérides de l'application</span><svg class="icon footer-arrow" aria-hidden="true"><use href="#i-external"/></svg></a></li>
           <li><span class="footer-ref" data-i18n="footer.meeus">Jean Meeus, Astronomical Algorithms — calcul en ligne</span></li>
           <li><span class="footer-ref">TimeAndDate · MoonCalc · StarDate</span></li>
-          <li><a href="https://unsplash.com/photos/a0TJ3hy-UD8" data-i18n="footer.photo">Photo du ciel : Phil Botha / Unsplash</a></li>
+          <li><a href="https://unsplash.com/photos/a0TJ3hy-UD8">
+            <span data-i18n="footer.photo">Photo du ciel : Phil Botha / Unsplash</span><svg class="icon footer-arrow" aria-hidden="true"><use href="#i-external"/></svg></a></li>
         </ul>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <p>© 2026 Niriantsoa Francia Raheriniaina · <span data-i18n="footer.privacy">Tous les calculs sont faits dans votre navigateur.</span></p>
-      <a class="footer-top" href="#top">
-        <span data-i18n="footer.top">Retour en haut</span>
-        <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>
-      </a>
+      <p class="footer-copy">© 2026 Niriantsoa Francia Raheriniaina · <span data-i18n="footer.privacy">Tous les calculs sont faits dans votre navigateur.</span></p>
+      <div class="footer-actions">
+        <div class="lang-switch" role="group" data-i18n-aria-label="lang.label" aria-label="Langue">
+          <button type="button" data-lang="fr" aria-pressed="true" lang="fr"><abbr title="Français">FR</abbr></button>
+          <button type="button" data-lang="en" aria-pressed="false" lang="en"><abbr title="English">EN</abbr></button>
+        </div>
+        <a class="footer-top" href="#top">
+          <span data-i18n="footer.top">Retour en haut</span>
+          <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>
+        </a>
+      </div>
     </div>
   </footer>
 </body>
