@@ -694,6 +694,9 @@ kbd {
    ========================================================================== */
 .article { scroll-snap-type: none; }
 .article .section, .article .page-intro { min-height: 0; display: block; }
+/* Page de lecture : fonds unis, sans photo (alternance sombre / un peu plus clair). */
+.article .section { background: var(--bg); }
+.article .section-alt { background: var(--bg-alt); }
 .article .section { padding-block: var(--s-16); }
 .page-intro { padding-block: var(--s-12) var(--s-16); }
 .page-intro h1 { max-width: 16ch; margin-bottom: var(--s-4); }
