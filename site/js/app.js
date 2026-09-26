@@ -1,7 +1,7 @@
 /*
  * app.js — calculateur, Lune, traductions et petites interactions de la page.
  */
-import { moonPhase, nextPrincipalPhase, PHASES, phaseId } from "./astro.js";
+import { moonPhase, nextPrincipalPhase, PHASES, phaseId, SYNODIC_MONTH } from "./astro.js";
 import { litPath, darkPath } from "./moon-svg.js";
 import { translations } from "./translations.js";
 
@@ -148,6 +148,7 @@ function render({ announce = true } = {}) {
   $("#ill-bar").style.width = `${d.illumination.toFixed(1)}%`;
   $("#angle-value").textContent = fmtDegrees(d.phaseAngle);
   $("#age-value").textContent = fmtDays(d.age);
+  $("#age-bar").style.width = `${((d.age / SYNODIC_MONTH) * 100).toFixed(1)}%`;
   $("#phase-name").textContent = phaseName;
   $("#phase-date").textContent = fmtLongDate(noon);
   $("#next-full").textContent = fmtMoment(nextPrincipalPhase(noon, 180));
@@ -301,6 +302,23 @@ function initControls() {
   });
 }
 
+/* ---------- Navigation : le lien de la section affichée est mis en évidence ---------- */
+function initScrollSpy() {
+  if (!("IntersectionObserver" in window)) return;
+  const links = $$('.nav-list a[href^="#"]');
+  const byId = new Map(links.map((a) => [a.getAttribute("href").slice(1), a]));
+  // Toutes les sections, y compris celles sans lien (les phases) : elles effacent la mise en évidence.
+  const sections = $$("main > section[id]");
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      for (const a of links) a.removeAttribute("aria-current");
+      byId.get(e.target.id)?.setAttribute("aria-current", "true");
+    }
+  }, { rootMargin: "-45% 0px -50% 0px" }); // la section qui occupe le milieu de l'écran
+  sections.forEach((s) => io.observe(s));
+}
+
 /* ---------- Animations d'entrée (styles dans styles.css) ---------- */
 /* Points de départ des cartes « Fonctionnalités » (effet constellation), en px et degrés. */
 const CONSTELLATION = [[-90, -60, -9], [0, -90, 6], [90, -50, 10], [-110, 50, 7], [20, 80, -6], [100, 70, -11]];
@@ -344,6 +362,7 @@ function init() {
 
   initMenu();
   initControls();
+  initScrollSpy();
   initReveal();
   renderPhaseIcons();
   applyLang(detectLang()); // appelle render()

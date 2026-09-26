@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
   <link rel="preload" href="assets/moon-poster.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="css/styles.css?v=2026-09-26j">
+  <link rel="stylesheet" href="css/styles.css?v=2026-09-26k">
   <script type="module" src="js/app.js"></script>
   <script>
     /* Une ancienne version du site installait un service worker qui servait du CSS/JS périmé.
@@ -200,12 +200,19 @@
               <div class="stat">
                 <dt data-i18n="calc.age">Âge de la Lune</dt>
                 <dd><span class="stat-value" id="age-value">—</span>
+                  <span class="bar bar-cycle" aria-hidden="true"><span class="bar-fill" id="age-bar"></span></span>
                   <span class="stat-hint" data-i18n="calc.ageHint">sur 29,53 jours</span></dd>
               </div>
             </dl>
             <dl class="next-phases">
-              <div><dt data-i18n="calc.nextFull">Prochaine pleine lune</dt><dd id="next-full">—</dd></div>
-              <div><dt data-i18n="calc.nextNew">Prochaine nouvelle lune</dt><dd id="next-new">—</dd></div>
+              <div>
+                <dt><svg class="mini-moon" viewBox="-1 -1 2 2" aria-hidden="true" focusable="false"><circle r="1" fill="var(--moon-lit)"/></svg><span data-i18n="calc.nextFull">Prochaine pleine lune</span></dt>
+                <dd id="next-full">—</dd>
+              </div>
+              <div>
+                <dt><svg class="mini-moon" viewBox="-1 -1 2 2" aria-hidden="true" focusable="false"><circle r="0.9" fill="var(--moon-dark)" stroke="#5A5F8A" stroke-width="0.2"/></svg><span data-i18n="calc.nextNew">Prochaine nouvelle lune</span></dt>
+                <dd id="next-new">—</dd>
+              </div>
             </dl>
             <p class="visually-hidden" id="live" aria-live="polite" aria-atomic="true"></p>
           </div>
@@ -272,6 +279,10 @@
             <span class="phase-card-name" data-i18n="phase.waningCrescent">Dernier croissant</span>
             <span class="phase-card-range">23,1 – 28,5 j</span></button></li>
         </ul>
+        <p class="phase-hint js-only">
+          <svg class="icon" aria-hidden="true"><use href="#i-right"/></svg>
+          <span data-i18n="phases.hint">Cliquez sur une phase pour aller à sa prochaine date.</span>
+        </p>
       </div>
     </section>
 
