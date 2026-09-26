@@ -498,10 +498,13 @@ kbd {
   .today-btn { display: inline-flex; }
 
   .stage {
-    grid-column: 2; grid-row: 1 / 6; align-self: center;
+    grid-column: 2; grid-row: 1 / 6; align-self: center; justify-self: end;
+    /* Calée à droite ; le disque occupe 80 % du canvas (halo autour), on décale de 10 %
+       pour que le bord du disque s'aligne sur le bord droit de l'en-tête. */
+    width: min(100%, 620px, calc(100svh - 280px)); transform: translateX(10%);
     margin: 0; padding: 0; background: none;
   }
-  .moon-box { width: min(100%, 620px, calc(100svh - 280px)); }
+  .moon-box { width: 100%; }
   .phase-name { font-size: clamp(2.25rem, 5vh, 3rem); margin-top: calc(-1 * var(--s-8)); }
   .phase-cycle { display: block; font-size: 1rem; }
 
