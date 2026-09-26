@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=2026-09-26o">
+  <link rel="stylesheet" href="css/styles.css?v=2026-09-26p">
   <script type="module" src="js/physique.js"></script>
   <script>
     /* Une ancienne version du site installait un service worker qui servait du CSS/JS périmé.
@@ -97,18 +97,16 @@
         <nav data-i18n-aria-label="nav.label" aria-label="Navigation principale">
           <ul class="nav-list">
             <li><a href="index.html#calculateur" data-i18n="nav.calculator">Calculateur</a></li>
-            <li><a href="index.html#fonctionnalites" data-i18n="nav.features">Fonctionnalités</a></li>
-            <li><a href="index.html#comment" data-i18n="nav.how">Comment ça marche</a></li>
-            <li><a href="index.html#code" data-i18n="nav.install">Utiliser le code</a></li>
             <li><a href="physique.html" aria-current="page" data-i18n="nav.physics">Comprendre</a></li>
+            <li><a href="index.html#code" data-i18n="nav.install">Utiliser le code</a></li>
           </ul>
         </nav>
         <div class="lang-switch" role="group" data-i18n-aria-label="lang.label" aria-label="Langue">
           <button type="button" data-lang="fr" aria-pressed="true" lang="fr"><abbr title="Français">FR</abbr></button>
           <button type="button" data-lang="en" aria-pressed="false" lang="en"><abbr title="English">EN</abbr></button>
         </div>
-        <a class="btn btn-outline btn-sm" href="https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia">
-          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub
+        <a class="btn btn-outline btn-sm gh-btn" href="https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia" title="GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span class="gh-label">GitHub</span>
         </a>
       </div>
     </div>

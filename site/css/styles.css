@@ -518,6 +518,9 @@ kbd {
   .nav-list a[aria-current="true"]::after { transform: scaleX(1); }
   .lang-switch { align-self: center; }
   .menu .btn-outline { align-self: center; }
+  /* Bouton GitHub réduit à son icône sur ordinateur (le texte reste lu par les lecteurs d'écran). */
+  .gh-btn { width: 44px; padding: 0; }
+  .gh-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .logo { font-size: 1.3125rem; }
 
   html { scroll-snap-type: y mandatory; }
