@@ -469,7 +469,7 @@ kbd {
       linear-gradient(180deg, transparent 70%, var(--bg) 100%);
   }
   .hero-grid {
-    display: grid; max-width: none; gap: 0 var(--s-12);
+    display: grid; max-width: calc(1248px + 2 * var(--gutter)); gap: 0 var(--s-12); /* même largeur que .container */
     grid-template-columns: 640px minmax(0, 1fr);
     grid-template-rows: auto auto auto auto auto auto;
     align-items: start;
