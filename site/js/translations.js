@@ -47,12 +47,6 @@ export const translations = {
 
     "cta.download": "Télécharger l'application",
     "cta.source": "Voir le code source",
-    "pwa.button": "Installer l'application",
-    "pwa.title": "Installer l'application",
-    "pwa.ios": "Dans Safari, touchez le bouton Partager (le carré avec une flèche vers le haut), puis «\u00a0Sur l'écran d'accueil\u00a0».",
-    "pwa.other": "Ouvrez le menu du navigateur (⋮), puis «\u00a0Installer l'application\u00a0» ou «\u00a0Ajouter à l'écran d'accueil\u00a0».",
-    "pwa.note": "Elle s'ouvre ensuite en plein écran et fonctionne sans connexion.",
-    "pwa.ok": "Compris",
 
     "moon.cycle": "Cycle de 29,53 jours",
     "moon.hint": "Glissez dans tous les sens pour faire tourner la Lune",
@@ -175,12 +169,6 @@ export const translations = {
 
     "cta.download": "Download the app",
     "cta.source": "View source code",
-    "pwa.button": "Install the app",
-    "pwa.title": "Install the app",
-    "pwa.ios": "In Safari, tap the Share button (the square with an arrow pointing up), then “Add to Home Screen”.",
-    "pwa.other": "Open the browser menu (⋮), then “Install app” or “Add to Home screen”.",
-    "pwa.note": "It then opens full screen and works offline.",
-    "pwa.ok": "Got it",
 
     "moon.cycle": "29.53-day cycle",
     "moon.hint": "Drag in any direction to rotate the Moon",

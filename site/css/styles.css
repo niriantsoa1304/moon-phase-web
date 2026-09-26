@@ -65,7 +65,6 @@ button { cursor: pointer; }
 abbr[title] { text-decoration: none; }
 :focus-visible { outline: none; box-shadow: var(--focus); }
 
-[hidden] { display: none !important; }
 .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 .icon { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .visually-hidden {
@@ -282,19 +281,6 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .hero-cta { display: flex; flex-direction: column; gap: var(--s-3); }
 .hero-cta .btn-gold { background: transparent; color: var(--text); border-color: #3A3F63; }
 .hero-cta .btn-outline { display: none; }
-
-/* Fenêtre d'aide à l'installation (iPhone, navigateurs sans invite) */
-.install-dialog {
-  width: min(100% - 2 * var(--gutter), 420px); padding: var(--s-6);
-  border: 1px solid var(--border); border-radius: var(--r-2xl);
-  background: var(--surface); color: var(--text);
-}
-.install-dialog::backdrop { background: rgba(5, 6, 14, 0.7); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
-.install-dialog h2 { font-size: 1.5rem; margin-bottom: var(--s-3); }
-.install-dialog p { color: var(--text-2); }
-.install-dialog-note { margin-top: var(--s-3); font-size: 0.875rem; }
-.install-dialog form { margin-top: var(--s-5); }
-.install-dialog .btn { width: 100%; }
 
 /* ---------- Sections ---------- */
 .section { padding-block: var(--s-16); border-top: 1px solid var(--border); }

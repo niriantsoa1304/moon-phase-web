@@ -301,43 +301,6 @@ function initControls() {
   });
 }
 
-/* ---------- Application installable (PWA) ---------- */
-function initInstall() {
-  if ("serviceWorker" in navigator) {
-    addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}), { once: true });
-  }
-
-  const installBtn = $("#install");
-  const downloadBtn = $(".hero-cta .download-btn");
-  const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
-  const touch = matchMedia("(pointer: coarse)").matches;
-  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  let deferredPrompt = null;
-
-  addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredPrompt = e; });
-  addEventListener("appinstalled", () => { deferredPrompt = null; installBtn.hidden = true; });
-
-  // Sur ordinateur, on garde le téléchargement de l'application Python.
-  if (!touch) return;
-  downloadBtn.hidden = true; // l'application Python ne tourne pas sur téléphone
-  if (standalone) return;    // déjà installée
-  installBtn.hidden = false;
-
-  installBtn.addEventListener("click", async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice.catch(() => {});
-      deferredPrompt = null;
-      return;
-    }
-    // iPhone / navigateurs sans invite d'installation : on explique la marche à suivre.
-    const dialog = $("#install-help");
-    $("#install-help-text").textContent = t(isIOS ? "pwa.ios" : "pwa.other");
-    if (typeof dialog.showModal === "function") dialog.showModal();
-    else alert($("#install-help-text").textContent);
-  });
-}
-
 /* ---------- Démarrage ---------- */
 function init() {
   const params = new URLSearchParams(location.search);
@@ -348,7 +311,6 @@ function init() {
 
   initMenu();
   initControls();
-  initInstall();
   renderPhaseIcons();
   applyLang(detectLang()); // appelle render()
 
