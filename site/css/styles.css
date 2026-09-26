@@ -179,17 +179,15 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 }
 .site-footer { min-height: var(--footer-h); }
 
-/* ---------- Fond : ciel étoilé derrière toute la page ----------
-   Photo Phil Botha (Unsplash), fixe pendant le défilement, assombrie pour la lisibilité. */
-:root { --sky: url("../assets/sky-800.webp"); }
-body { isolation: isolate; }
-body::before {
-  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(13, 15, 28, 0.5), rgba(13, 15, 28, 0.68)),
-    var(--sky) center 35% / cover no-repeat,
-    var(--bg);
+/* ---------- Fond : ciel étoilé dans chaque section ----------
+   Photo Phil Botha (Unsplash) en entier dans chaque section (montagnes en bas),
+   sous un voile qui garde le texte lisible. */
+:root { --sky: url("../assets/sky-1280.webp"); }
+.hero, .section {
+  --veil: linear-gradient(180deg, rgba(13, 15, 28, 0.5), rgba(13, 15, 28, 0.7));
+  background: var(--veil), var(--sky) center bottom / cover no-repeat, var(--bg);
 }
+.section-alt { --veil: linear-gradient(180deg, rgba(17, 20, 39, 0.62), rgba(17, 20, 39, 0.78)); }
 
 /* ---------- Hero ---------- */
 .hero { padding-block: var(--s-10) var(--s-16); }
@@ -288,7 +286,6 @@ body::before {
 
 /* ---------- Sections ---------- */
 .section { padding-block: var(--s-16); border-top: 1px solid var(--border); }
-.section-alt { background: rgba(17, 20, 39, 0.45); } /* voile léger : le ciel reste visible */
 .section-head { margin-bottom: var(--s-8); }
 .section-lede { margin-top: var(--s-3); color: var(--text-2); }
 
@@ -372,7 +369,7 @@ kbd {
   border-top: 1px solid var(--border);
   background:
     radial-gradient(60% 120% at 0% 0%, rgba(232, 194, 122, 0.06), transparent 60%),
-    rgba(11, 13, 25, 0.78);
+    var(--surface-deep);
 }
 /* Mobile : une seule colonne, listes pleine largeur en lignes séparées. */
 .footer-grid { display: grid; gap: var(--s-8); padding-block: var(--s-12) var(--s-8); }
@@ -439,7 +436,6 @@ kbd {
 @media (min-width: 768px) {
   :root { --gutter: var(--s-8); --header-h: 80px; --footer-h: 690px; }
   .logo-long { display: inline; }
-  :root { --sky: url("../assets/sky-1280.webp"); }
   .hero { padding-block: var(--s-16) var(--s-20); }
   .hero-grid { max-width: 680px; margin-inline: auto; }
   .lede, .body-lg { font-size: 1.125rem; }
@@ -496,7 +492,7 @@ kbd {
   .hero {
     padding-block: var(--s-5);
     /* Texte à gauche sur un voile plus sombre, ciel plus visible à droite derrière la Lune. */
-    background: linear-gradient(90deg, rgba(13, 15, 28, 0.7) 0%, rgba(13, 15, 28, 0.45) 42%, transparent 100%);
+    --veil: linear-gradient(90deg, rgba(13, 15, 28, 0.8) 0%, rgba(13, 15, 28, 0.6) 42%, rgba(13, 15, 28, 0.3) 100%);
   }
   .hero-grid {
     display: grid; max-width: calc(1248px + 2 * var(--gutter)); gap: 0 var(--s-12); /* même largeur que .container */
