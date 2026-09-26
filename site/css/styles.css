@@ -33,7 +33,7 @@
 
   --gutter: var(--s-5);
   --header-h: 72px;
-  --footer-h: 208px;
+  --footer-h: 680px;
   --focus: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent);
 }
 
@@ -177,7 +177,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
   min-height: calc(100vh - var(--header-h) - var(--footer-h));
   min-height: calc(100svh - var(--header-h) - var(--footer-h));
 }
-.site-footer { min-height: var(--footer-h); display: flex; flex-direction: column; justify-content: center; }
+.site-footer { min-height: var(--footer-h); }
 
 /* ---------- Hero ---------- */
 .hero { padding-block: var(--s-10) var(--s-16); }
@@ -358,19 +358,56 @@ kbd {
 .github-cta { width: 100%; }
 
 /* Pied de page */
-.site-footer { border-top: 1px solid var(--border); padding-block: var(--s-8) var(--s-10); }
-.footer-inner { display: flex; flex-direction: column; gap: var(--s-4); }
+.site-footer {
+  border-top: 1px solid var(--border);
+  background:
+    radial-gradient(60% 120% at 0% 0%, rgba(232, 194, 122, 0.06), transparent 60%),
+    var(--surface-deep);
+}
+.footer-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-8) var(--s-6);
+  padding-block: var(--s-12) var(--s-8);
+}
+.footer-brand { grid-column: 1 / -1; }
+.footer-col:first-of-type { display: none; } /* sur mobile, la navigation est dans le menu */
+.footer-brand .logo { font-size: 1.25rem; }
+.footer-tagline { margin-top: var(--s-4); max-width: 34ch; color: var(--text-2); font-size: 0.9375rem; line-height: 1.6; }
+.footer-author { margin-top: var(--s-5); padding-left: var(--s-4); border-left: 2px solid var(--accent); }
 .footer-name { font-weight: 500; font-size: 0.9375rem; }
 .footer-degree { color: var(--text-2); font-size: 0.875rem; }
-.footer-links { display: flex; gap: var(--s-6); }
-.footer-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent); text-decoration: none; font-size: 0.9375rem; }
-.footer-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.footer-title {
+  margin-bottom: var(--s-3);
+  font: 400 0.75rem/1.4 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+}
+.footer-col a, .footer-ref {
+  display: inline-flex; align-items: center; gap: var(--s-2); min-height: 40px;
+  font-size: 0.9375rem; color: var(--text-2); text-decoration: none; line-height: 1.4;
+}
+.footer-col a { min-height: 44px; }
+.footer-col a .icon { width: 16px; height: 16px; }
+.footer-col a:hover { color: var(--text); }
+.footer-col a:hover span, .footer-col a:hover:not(:has(span)) { text-decoration: underline; text-underline-offset: 3px; }
+.footer-ref { color: #8F8CA3; }
+
+.footer-bottom {
+  display: flex; flex-direction: column; gap: var(--s-2);
+  padding-block: var(--s-5) var(--s-6);
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem; color: #8F8CA3;
+}
+.footer-top {
+  display: inline-flex; align-items: center; gap: var(--s-2); min-height: 44px; align-self: flex-start;
+  color: var(--accent); text-decoration: none; font-weight: 500;
+}
+.footer-top .icon { width: 16px; height: 16px; }
+.footer-top:hover span { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ==========================================================================
    Tablette ≥ 768 px
    ========================================================================== */
 @media (min-width: 768px) {
-  :root { --gutter: var(--s-8); --header-h: 80px; --footer-h: 128px; }
+  :root { --gutter: var(--s-8); --header-h: 80px; --footer-h: 650px; }
   .logo-long { display: inline; }
   .hero { padding-block: var(--s-16) var(--s-20); }
   .hero-grid { max-width: 680px; margin-inline: auto; }
@@ -387,7 +424,10 @@ kbd {
   .feature { flex-direction: column; padding: var(--s-8); }
   .next-phases { grid-template-columns: 1fr 1fr; }
   .next-phases div { flex-direction: column; gap: 0; }
-  .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; }
+  .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer-col:first-of-type { display: block; }
+  .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+  .footer-top { align-self: center; }
   .github-cta { width: auto; align-self: flex-start; }
   .formula { font-size: 1rem; }
 }
@@ -396,7 +436,7 @@ kbd {
    Ordinateur ≥ 1200 px — mise en page de la maquette 1440
    ========================================================================== */
 @media (min-width: 1200px) {
-  :root { --gutter: var(--s-24); --header-h: 92px; }
+  :root { --gutter: var(--s-24); --header-h: 92px; --footer-h: 428px; }
   .container { max-width: calc(1248px + 2 * var(--gutter)); }
 
   /* En-tête : navigation visible */
@@ -464,6 +504,7 @@ kbd {
   .bar { display: block; }
 
   .section { padding-block: var(--s-12); }
+  .section:last-of-type { padding-block: var(--s-8); }
   .section-head-split { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-12); margin-bottom: var(--s-12); }
   .section-head-split .section-lede { max-width: 460px; margin: 0; }
   .h2-narrow { max-width: 640px; }
@@ -475,5 +516,6 @@ kbd {
   .github-cta { display: none; }
   .steps { padding-top: var(--s-2); }
   .step { padding-block: var(--s-6); }
-  .footer-inner { align-items: flex-end; }
+  .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: var(--s-12); padding-block: var(--s-12) var(--s-10); }
+  .footer-brand { grid-column: auto; }
 }
