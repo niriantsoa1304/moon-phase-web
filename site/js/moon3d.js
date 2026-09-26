@@ -39,7 +39,7 @@ const FS = [
   " float ct=cos(uTilt);float st=sin(uTilt);vec3 q=vec3(n.x,ct*n.y-st*n.z,st*n.y+ct*n.z);",
   " float cy=cos(uRot);float sy=sin(uRot);vec3 p=vec3(cy*q.x+sy*q.z,q.y,-sy*q.x+cy*q.z);",
   " float alb;",
-  " if(uHasTex>0.5){float lon=atan(p.x,p.z);float lat=asin(clamp(p.y,-1.0,1.0));alb=texture2D(uTex,vec2(0.5+lon/6.2831853,0.5-lat/3.1415927)).r*1.18;}",
+  " if(uHasTex>0.5){float lon=atan(p.x,p.z);float lat=asin(clamp(p.y,-1.0,1.0));alb=texture2D(uTex,vec2(0.5+lon/6.2831853,0.5-lat/3.1415927)).r*1.08;}",
   " else{float maria=smoothstep(0.47,0.63,fbm(p*1.5+vec3(2.0,5.0,1.0)));alb=0.74-0.32*maria+0.20*(fbm(p*8.0)-0.5)+0.10*craters(p*5.0)+0.06*craters(p*13.0);}",
   " alb=clamp(alb,0.05,1.0);",
   " float ndl=dot(n,sun);",
@@ -106,6 +106,8 @@ export function createMoon3D(canvas, opts = {}) {
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
         state.hasTex = 1;
       } catch (e) { state.hasTex = 0; }
+      // Redessiner avec la texture, même si la boucle est à l'arrêt (prefers-reduced-motion, Lune immobile).
+      schedule(); if (!state.raf) draw();
       requestAnimationFrame(signalReady);
     };
     img.onerror = signalReady; // surface procédurale

@@ -54,5 +54,6 @@ Le dossier `site/` se publie tel quel :
 
 ## Crédits
 
-La licence de `moon.jpg` n'est pas confirmée. À remplacer par la carte 2K du NASA CGI Moon Kit
-(`lroc_color_poles_2k`, NASA's Scientific Visualization Studio), puis relancer `tools/make_assets.py`.
+- Carte lunaire (`site/assets/moon.jpg`) : CGI Moon Kit, `lroc_color_poles_2k`, données de la sonde LRO —
+  NASA's Scientific Visualization Studio (https://svs.gsfc.nasa.gov/4720/). Crédit affiché dans le pied de page.
+- Photo du ciel : Phil Botha / Unsplash (https://unsplash.com/photos/a0TJ3hy-UD8).
