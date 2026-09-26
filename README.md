@@ -19,7 +19,8 @@ Les modules ES ne se chargent pas depuis `file://` : il faut passer par un serve
 
 ```
 site/
-  index.html              page unique, textes FR en dur (lisible sans JavaScript)
+  index.html              page d'accueil : calculateur, phases, présentation du code
+  physique.html           page « La physique des phases » (générée par tools/make_physique.py)
   css/styles.css          styles, mobile d'abord (ruptures à 768 et 1200 px)
   js/astro.js             Soleil (Meeus ch. 25), Lune (ch. 47), phase (ch. 48), dates des phases
   js/moon3d.js            Lune 3D WebGL (issue de Moon3d.js)
@@ -28,6 +29,7 @@ site/
   js/app.js               calculateur, langue, URL, partage, menu
   assets/                 texture, image fixe de la Lune, icônes, image de partage
 tools/make_assets.py      régénère les images de site/assets à partir de moon.jpg
+tools/make_physique.py    régénère site/physique.html (en-tête, pied de page, textes FR)
 ```
 
 ## Calcul

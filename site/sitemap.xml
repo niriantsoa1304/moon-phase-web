@@ -4,4 +4,8 @@
     <loc>[URL DU SITE]/</loc>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>[URL DU SITE]/physique.html</loc>
+    <changefreq>yearly</changefreq>
+  </url>
 </urlset>

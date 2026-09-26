@@ -498,7 +498,7 @@ kbd {
    Ordinateur ≥ 1200 px — mise en page de la maquette 1440
    ========================================================================== */
 @media (min-width: 1200px) {
-  :root { --gutter: var(--s-24); --header-h: 92px; --footer-h: 440px; }
+  :root { --gutter: var(--s-24); --header-h: 92px; --footer-h: 476px; }
   .container { max-width: calc(1248px + 2 * var(--gutter)); }
 
   /* En-tête : navigation visible */
@@ -583,7 +583,7 @@ kbd {
   .bar { display: block; }
 
   .section { padding-block: var(--s-12); }
-  .section:last-of-type { padding-block: var(--s-8); }
+  .section:last-of-type { padding-block: var(--s-5); }
   .section-head-split { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-12); margin-bottom: var(--s-12); }
   .section-head-split .section-lede { max-width: 460px; margin: 0; }
   .h2-narrow { max-width: 640px; }
@@ -688,3 +688,123 @@ kbd {
 /* 6. Pied de page — colonnes en cascade */
 .motion .site-footer :is(.footer-brand, .footer-col, .footer-bottom) { opacity: 0; }
 .motion .site-footer.in-view :is(.footer-brand, .footer-col, .footer-bottom) { animation: rise 0.8s calc(var(--i, 0) * 0.12s) ease-out both; }
+
+/* ==========================================================================
+   Page « Physique » (physique.html, <html class="article">)
+   ========================================================================== */
+.article { scroll-snap-type: none; }
+.article .section, .article .page-intro { min-height: 0; display: block; }
+.article .section { padding-block: var(--s-16); }
+.page-intro { padding-block: var(--s-12) var(--s-16); }
+.page-intro h1 { max-width: 16ch; margin-bottom: var(--s-4); }
+.intro-lede { max-width: 62ch; font-size: 1.0625rem; }
+.nav-list a[aria-current="page"] { color: var(--accent); }
+
+/* Sommaire */
+.toc { margin-top: var(--s-10); }
+.toc-title { margin-bottom: var(--s-3); font: 400 0.75rem/1.4 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.toc ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
+.toc a {
+  display: flex; align-items: center; gap: var(--s-3); min-height: 48px; padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--border); border-radius: var(--r-md); background: rgba(21, 24, 48, 0.7);
+  color: var(--text); text-decoration: none; font-size: 0.9375rem;
+  transition: border-color .2s, translate .2s;
+}
+.toc a:hover { border-color: rgba(232, 194, 122, 0.55); translate: 0 -2px; }
+.toc-num {
+  display: grid; place-items: center; width: 28px; height: 28px; flex: none; border-radius: 50%;
+  border: 1px solid var(--accent); color: var(--accent); font: 400 0.8125rem/1 var(--font-mono);
+}
+
+/* Texte et schémas */
+.article h2 { margin-bottom: var(--s-6); max-width: 22ch; }
+.article-grid { display: grid; gap: var(--s-8); align-items: start; }
+.prose { max-width: 66ch; color: var(--text-2); font-size: 1rem; line-height: 1.75; }
+.prose p + p, .prose .formula + p, .prose p + .formula { margin-top: var(--s-4); }
+.prose strong { color: var(--text); font-weight: 600; }
+.prose em { font-style: italic; color: var(--text); }
+.prose .formula { margin-top: var(--s-4); }
+.prose-wide { max-width: 72ch; }
+.text-link { display: inline-flex; align-items: center; gap: var(--s-2); min-height: 44px; color: var(--accent); text-decoration: none; font-weight: 500; }
+.text-link .icon { width: 16px; height: 16px; }
+.text-link:hover span { text-decoration: underline; text-underline-offset: 3px; }
+
+.figure-card {
+  margin: 0; padding: var(--s-5);
+  border: 1px solid var(--border); border-radius: var(--r-2xl);
+  background: rgba(11, 13, 25, 0.78);
+}
+.figure-card > svg { width: 100%; height: auto; }
+.figure-card figcaption, .demo-note { margin-top: var(--s-3); font-size: 0.8125rem; line-height: 1.55; color: var(--text-2); }
+.figure-narrow > svg { max-width: 340px; margin-inline: auto; }
+
+/* Textes et tracés des schémas SVG */
+.svg-label { font: 500 13px var(--font-sans); fill: var(--text); }
+.svg-small { font: 500 0.13px var(--font-sans); fill: var(--text); }
+.svg-gold { fill: var(--accent); }
+.svg-muted { fill: var(--text-2); }
+.rays line { stroke: var(--accent); stroke-width: 1.5; stroke-opacity: 0.55; }
+.orbit-path { fill: none; stroke: #4A4F78; stroke-width: 1.5; stroke-dasharray: 4 6; }
+.orbit-dir { fill: none; stroke: #6E7399; stroke-width: 2; }
+.sight { stroke: var(--accent); stroke-opacity: 0.35; stroke-width: 1.5; stroke-dasharray: 3 5; }
+.visible-arc { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 3 3; }
+.star-dir line { stroke: #8F8CA3; stroke-width: 1.2; stroke-dasharray: 5 5; }
+.sun-line { stroke: var(--accent); stroke-opacity: 0.4; stroke-width: 1.2; stroke-dasharray: 2 4; }
+.moon-new { stroke: var(--accent); stroke-width: 2; }
+.term-line { fill: none; stroke: var(--accent); stroke-width: 0.03; }
+.term-measure { stroke: var(--accent); stroke-width: 0.02; }
+.term-leader { stroke: var(--accent); stroke-width: 0.012; }
+.ecl-plane { fill: rgba(62, 120, 181, 0.12); stroke: #3E78B5; stroke-opacity: 0.6; }
+.ecl-ref { fill: none; stroke: #3E78B5; stroke-opacity: 0.45; stroke-dasharray: 3 5; }
+.moon-orbit-front { fill: none; stroke: #EFE9DA; stroke-width: 2; }
+.moon-orbit-back { fill: none; stroke: #EFE9DA; stroke-opacity: 0.4; stroke-width: 2; stroke-dasharray: 4 5; }
+.node { fill: var(--accent); }
+
+/* Schéma interactif */
+.demo-panel { display: grid; grid-template-columns: auto 1fr; gap: var(--s-5); align-items: center; margin-top: var(--s-4); }
+.demo-view { display: flex; flex-direction: column; align-items: center; gap: var(--s-1); width: 132px; }
+.demo-view svg { width: 112px; height: 112px; }
+.demo-view-label { font-size: 0.75rem; color: var(--text-2); }
+.demo-phase { font: 400 1.125rem/1.2 var(--font-serif); text-align: center; }
+.demo-values { display: grid; gap: var(--s-1); }
+.demo-values div { display: flex; justify-content: space-between; gap: var(--s-3); padding-block: var(--s-1); border-bottom: 1px solid var(--border); font-size: 0.875rem; }
+.demo-values dt { color: var(--text-2); }
+.demo-values dd { font-family: var(--font-mono); }
+.demo-controls { margin-top: var(--s-5); }
+.demo-controls label { display: block; margin-bottom: var(--s-2); font-size: 0.875rem; color: var(--text-2); }
+.demo-controls input[type="range"] { width: 100%; height: 44px; accent-color: var(--accent); cursor: pointer; }
+.demo-buttons { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-2); }
+
+.mini-figures { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-6); }
+.mini-figure { margin: 0; text-align: center; }
+.mini-figure svg { width: min(100%, 150px); height: auto; margin-inline: auto; }
+.mini-figure figcaption { margin-top: var(--s-2); color: var(--text); font-weight: 500; font-size: 0.9375rem; }
+
+.cta-row { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-6); }
+.sources-title { margin-top: var(--s-8); margin-bottom: var(--s-2); font-size: 1rem; color: var(--text); }
+.sources { font-size: 0.875rem; color: var(--text-2); }
+.sources li + li { margin-top: var(--s-1); }
+.sources a { color: var(--accent); }
+
+@media (max-width: 767px) {
+  .article .section-head, .article .section > .container > .eyebrow, .article h2 { text-align: left; }
+  .demo-panel { grid-template-columns: 1fr; justify-items: center; }
+  .demo-values { width: 100%; }
+}
+@media (min-width: 768px) {
+  .toc ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .article .section { padding-block: var(--s-20); }
+}
+@media (min-width: 1200px) {
+  .page-intro { padding-block: var(--s-20) var(--s-16); }
+  .article-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--s-16); }
+  .article-grid > .steps { padding-top: var(--s-2); }
+}
+.fig-badge circle { fill: var(--accent); }
+.fig-badge text { font: 600 13px var(--font-mono); fill: var(--on-accent); }
+.fig-legend { display: grid; gap: var(--s-2); margin-top: var(--s-3); font-size: 0.875rem; color: var(--text); }
+.fig-legend li { display: flex; align-items: flex-start; gap: var(--s-3); }
+.fig-num {
+  display: grid; place-items: center; width: 22px; height: 22px; flex: none; border-radius: 50%;
+  background: var(--accent); color: var(--on-accent); font: 600 0.75rem/1 var(--font-mono);
+}
