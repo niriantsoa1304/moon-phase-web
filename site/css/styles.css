@@ -279,8 +279,8 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .toast { font-size: 0.8125rem; color: var(--accent); min-height: 1.2em; }
 
 .hero-cta { display: flex; flex-direction: column; gap: var(--s-3); }
-.hero-cta .btn-gold { background: transparent; color: var(--text); border-color: #3A3F63; }
-.hero-cta .btn-outline { display: none; }
+/* Sur téléphone et tablette, l'application Python ne peut pas s'installer : on montre le code source. */
+@media (pointer: coarse) { .hero-cta .btn-gold { display: none; } }
 
 /* ---------- Sections ---------- */
 .section { padding-block: var(--s-16); border-top: 1px solid var(--border); }
@@ -442,8 +442,6 @@ kbd {
   .stage { margin-inline: calc(-1 * var(--s-6)); }
   .moon-box { width: min(100%, 400px); }
   .hero-cta { flex-direction: row; }
-  .hero-cta .btn-gold { background: var(--accent); color: var(--on-accent); border-color: transparent; }
-  .hero-cta .btn-outline { display: inline-flex; }
   .section { padding-block: var(--s-24); }
   .phase-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4); }
   .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6); }
