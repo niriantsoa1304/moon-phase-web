@@ -179,14 +179,20 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 }
 .site-footer { min-height: var(--footer-h); }
 
-/* ---------- Hero ---------- */
-/* Fond : ciel étoilé (photo Phil Botha, Unsplash), assombri pour la lisibilité du texte. */
-.hero {
-  --sky: url("../assets/sky-800.webp");
-  --veil: linear-gradient(180deg, rgba(13, 15, 28, 0.55) 0%, rgba(13, 15, 28, 0.7) 55%, var(--bg) 100%);
-  padding-block: var(--s-10) var(--s-16);
-  background: var(--veil), var(--sky) center 35% / cover no-repeat, var(--bg);
+/* ---------- Fond : ciel étoilé derrière toute la page ----------
+   Photo Phil Botha (Unsplash), fixe pendant le défilement, assombrie pour la lisibilité. */
+:root { --sky: url("../assets/sky-800.webp"); }
+body { isolation: isolate; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(13, 15, 28, 0.5), rgba(13, 15, 28, 0.68)),
+    var(--sky) center 35% / cover no-repeat,
+    var(--bg);
 }
+
+/* ---------- Hero ---------- */
+.hero { padding-block: var(--s-10) var(--s-16); }
 .hero-grid { display: flex; flex-direction: column; gap: var(--s-8); }
 .hero-intro h1 { margin-bottom: var(--s-4); }
 .hero-intro .eyebrow { margin-bottom: var(--s-5); }
@@ -282,7 +288,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 
 /* ---------- Sections ---------- */
 .section { padding-block: var(--s-16); border-top: 1px solid var(--border); }
-.section-alt { background: var(--bg-alt); }
+.section-alt { background: rgba(17, 20, 39, 0.45); } /* voile léger : le ciel reste visible */
 .section-head { margin-bottom: var(--s-8); }
 .section-lede { margin-top: var(--s-3); color: var(--text-2); }
 
@@ -366,7 +372,7 @@ kbd {
   border-top: 1px solid var(--border);
   background:
     radial-gradient(60% 120% at 0% 0%, rgba(232, 194, 122, 0.06), transparent 60%),
-    var(--surface-deep);
+    rgba(11, 13, 25, 0.78);
 }
 /* Mobile : une seule colonne, listes pleine largeur en lignes séparées. */
 .footer-grid { display: grid; gap: var(--s-8); padding-block: var(--s-12) var(--s-8); }
@@ -433,7 +439,8 @@ kbd {
 @media (min-width: 768px) {
   :root { --gutter: var(--s-8); --header-h: 80px; --footer-h: 690px; }
   .logo-long { display: inline; }
-  .hero { padding-block: var(--s-16) var(--s-20); --sky: url("../assets/sky-1280.webp"); }
+  :root { --sky: url("../assets/sky-1280.webp"); }
+  .hero { padding-block: var(--s-16) var(--s-20); }
   .hero-grid { max-width: 680px; margin-inline: auto; }
   .lede, .body-lg { font-size: 1.125rem; }
   .calc { padding: var(--s-6); }
@@ -485,13 +492,11 @@ kbd {
   html { scroll-snap-type: y mandatory; }
 
   /* Hero en deux colonnes : le contenu de .calc est placé dans la grille */
+  :root { --sky: url("../assets/sky-1920.webp"); }
   .hero {
     padding-block: var(--s-5);
-    --sky: url("../assets/sky-1920.webp");
-    /* Texte à gauche sur fond sombre, ciel plus visible à droite derrière la Lune. */
-    --veil:
-      linear-gradient(90deg, rgba(13, 15, 28, 0.9) 0%, rgba(13, 15, 28, 0.72) 42%, rgba(13, 15, 28, 0.3) 100%),
-      linear-gradient(180deg, transparent 70%, var(--bg) 100%);
+    /* Texte à gauche sur un voile plus sombre, ciel plus visible à droite derrière la Lune. */
+    background: linear-gradient(90deg, rgba(13, 15, 28, 0.7) 0%, rgba(13, 15, 28, 0.45) 42%, transparent 100%);
   }
   .hero-grid {
     display: grid; max-width: calc(1248px + 2 * var(--gutter)); gap: 0 var(--s-12); /* même largeur que .container */
