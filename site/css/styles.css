@@ -192,8 +192,10 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
   background-size: auto, cover;
   background-repeat: no-repeat;
 }
-/* Alternance : sections « alt » (phases, comment ça marche) un peu sombres, les autres claires. */
-.section-alt { --veil: linear-gradient(180deg, rgba(10, 12, 24, 0.5), rgba(10, 12, 24, 0.64)); }
+/* Trois niveaux : le hero reste le plus clair ; les sections sont plus sombres que lui,
+   et les sections « alt » (phases, comment ça marche) encore plus sombres. */
+.section { --veil: linear-gradient(180deg, rgba(10, 12, 24, 0.42), rgba(10, 12, 24, 0.56)); }
+.section-alt { --veil: linear-gradient(180deg, rgba(8, 10, 20, 0.68), rgba(8, 10, 20, 0.82)); }
 
 /* ---------- Hero ---------- */
 .hero { padding-block: var(--s-10) var(--s-16); }
