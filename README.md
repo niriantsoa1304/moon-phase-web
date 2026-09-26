@@ -1,5 +1,7 @@
 # Moon Phase Calculator — site web
 
+Code de l'application : https://github.com/niriantsoa1304/Moon_Phase_Calculator_Francia
+
 Vitrine de l'application Python « Moon Phase Calculator », avec un calculateur en ligne et une Lune 3D interactive.
 Site statique (HTML, CSS, JavaScript en modules ES), sans framework ni étape de compilation.
 
@@ -38,10 +40,8 @@ tools/make_assets.py      régénère les images de site/assets à partir de moo
 
 ## À compléter avant publication
 
-Remplacer les emplacements suivants dans `site/` :
+Remplacer l'emplacement suivant dans `site/` :
 
-- `[LIEN GITHUB]` : adresse du dépôt
-- `[LIEN TÉLÉCHARGEMENT]` : lien de téléchargement de l'application
 - `[URL DU SITE]` : adresse publique du site (balises Open Graph, `robots.txt`, `sitemap.xml`)
 
 ## Publier
