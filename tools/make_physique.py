@@ -147,10 +147,10 @@ term_svg = f'''<svg viewBox="-1.6 -1.35 3.2 2.7" role="img" aria-labelledby="ter
               <path d="M0 -1A1 1 0 0 1 0 1A0.5 1 0 0 1 0 -1Z" fill="#EFE9DA"/>
               <path class="term-line" d="M0 1A0.5 1 0 0 1 0 -1"/>
               <line class="term-measure" x1="0" y1="0" x2="-0.5" y2="0"/>
-              <circle r="0.025" fill="#E8C27A"/>
+              <circle r="0.03" fill="#1E2346"/>
               <text class="svg-small svg-gold" x="-0.62" y="-0.72" text-anchor="end" {t("s3.fig.term")}</text>
               <line class="term-leader" x1="-0.6" y1="-0.68" x2="-0.42" y2="-0.5"/>
-              <text class="svg-small" x="-0.25" y="0.18" text-anchor="middle">cos i</text>
+              <text class="svg-small svg-on-lit" x="-0.25" y="-0.07" text-anchor="middle">cos i</text>
               <text class="svg-small svg-muted" x="0" y="1.25" text-anchor="middle" {t("s3.fig.half")}</text>
             </svg>'''
 
