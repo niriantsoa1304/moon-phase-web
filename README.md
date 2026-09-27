@@ -40,19 +40,14 @@ tools/make_physique.py    régénère site/physique.html (en-tête, pied de page
 - Comparaison avec la classe Python (Astropy) sur 120 dates entre 1950 et 2100, à 00:00 UTC :
   écart maximum de 0,14 % d'illumination, 0,16° d'angle de phase et 0,002 jour d'âge, noms de phase identiques.
 
-## À compléter avant publication
-
-Remplacer l'emplacement suivant dans `site/` :
-
-- `[URL DU SITE]` : adresse publique du site (balises Open Graph, `robots.txt`, `sitemap.xml`)
-
 ## Publier
 
-Le dossier `site/` se publie tel quel :
+Adresse du site sur GitHub Pages : https://niriantsoa1304.github.io/moon-phase-web/
 
-- **GitHub Pages** : *Settings → Pages*, puis publier le dossier `site/` (par exemple avec une action
-  `actions/upload-pages-artifact` qui pointe sur `site`).
-- **Netlify** : glisser-déposer le dossier `site/`, ou régler le *publish directory* sur `site`.
+Le workflow `.github/workflows/pages.yml` publie le dossier `site/` à chaque envoi sur `main`.
+Réglage à faire une seule fois sur GitHub : *Settings → Pages → Build and deployment → Source : GitHub Actions*.
+
+Le dossier `site/` peut aussi être publié tel quel sur Netlify (glisser-déposer, ou *publish directory* : `site`).
 
 ## Crédits
 

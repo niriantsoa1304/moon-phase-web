@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: [URL DU SITE]/sitemap.xml
+Sitemap: https://niriantsoa1304.github.io/moon-phase-web/sitemap.xml

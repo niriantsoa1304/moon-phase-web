@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>[URL DU SITE]/</loc>
+    <loc>https://niriantsoa1304.github.io/moon-phase-web/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>[URL DU SITE]/physique.html</loc>
+    <loc>https://niriantsoa1304.github.io/moon-phase-web/physique.html</loc>
     <changefreq>yearly</changefreq>
   </url>
 </urlset>
